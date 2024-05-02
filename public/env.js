@@ -1,0 +1,8 @@
+window.env = {
+  "REACT_APP_API_KEY": "AIzaSyAcPYm_uYGuMMLQuACGJMjsbGdPzVanJMQ",
+  "REACT_APP_AUTH_DOMAIN": "chat-app-35149.firebaseapp.com",
+  "REACT_APP_PROJECT_ID": "chat-app-35149",
+  "REACT_APP_STORAGE_BUCKET": "chat-app-35149.appspot.com",
+  "REACT_APP_MESSENGING_SENDER_ID": "828922396397",
+  "REACT_APP_APP_ID": "1:828922396397:web:db211b75bd94e8e67bd6e4"
+};
