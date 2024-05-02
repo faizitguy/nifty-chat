@@ -126,9 +126,6 @@ const createGroup = async (groupName, selectedUsers) => {
   }
 };
 
-  const handleDelete = (delUser) => {
-    // setSelectedUsers(selectedUsers.filter(user => user.id !== delUser.id));
-  };
 
 const handleSubmit = async () => {
   if (!groupChatName) {
@@ -158,8 +155,6 @@ const handleSubmit = async () => {
 
 };
 
-
-  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleSelectChange = (selectedOptions) => {
     setSelectedUsers(selectedOptions);
