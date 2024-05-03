@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   collection,
   query,
@@ -14,12 +14,31 @@ import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { SearchIcon } from '@chakra-ui/icons';
 
+
+const useDebouncedValue = (inputValue, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(inputValue);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(inputValue);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [inputValue, delay]);
+
+  return debouncedValue;
+};
+
 const Search = () => {
   const [username, setUsername] = useState("");
+  const debouncedSearchTerm = useDebouncedValue(username, 500);
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
+
 
   const handleSearch = async () => {
     const q = query(
@@ -78,6 +97,12 @@ const Search = () => {
     setUser(null);
     setUsername("")
   };
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      handleSearch();
+    }
+  }, [debouncedSearchTerm]);
 
   return (
     <div className="search">
