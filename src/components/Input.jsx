@@ -81,7 +81,7 @@ const Input = () => {
   
         uploadTask.on(
           (error) => {
-            //TODO:Handle Error
+            console.log(error,'error while uploading')
           },
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -136,6 +136,7 @@ const Input = () => {
         type="text"
         placeholder="Type something..."
         onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKey}
         value={text}
       />
       <div className="send">
@@ -149,10 +150,7 @@ const Input = () => {
         <label htmlFor="file">
           <img src={Img} alt="" />
         </label>
-        <button onClick={() => {
-          handleSend();
-          handleKey();
-        }}>Send</button>
+        <button onClick={handleSend}>Send</button>
       </div>
     </div>
   );
